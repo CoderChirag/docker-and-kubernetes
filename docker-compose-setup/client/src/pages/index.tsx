@@ -23,17 +23,17 @@ interface RedisData {
 
 export default function Home() {
   const fetchSqlData = async () => {
-    const res = await axios.get<SQLData>("/values/all");
+    const res = await axios.get<SQLData>("/api/values/all");
     return res.data;
   };
 
   const fetchRedisData = async () => {
-    const res = await axios.get<RedisData>("/values/cached");
+    const res = await axios.get<RedisData>("/api/values/cached");
     return res.data;
   };
 
   const postData = async (index: number) => {
-    await axios.post("/values", {
+    await axios.post("/api/values", {
       index: index,
     });
   };
