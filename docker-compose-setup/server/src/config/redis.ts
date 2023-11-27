@@ -7,5 +7,5 @@ export const redisConfig: RedisClientOptions = {
     reconnectStrategy: 1000,
     tls: false,
   },
-  password: process.env.REDIS_PASSWORD,
+  // password: process.env.REDIS_PASSWORD,
 };

@@ -1,0 +1,7 @@
+FROM node:lts
+WORKDIR /app
+COPY package.json yarn.lock .yarnrc.yml ./
+COPY .yarn .yarn
+RUN yarn --immutable
+COPY . .
+CMD ["yarn", "dev"]

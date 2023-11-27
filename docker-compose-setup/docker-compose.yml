@@ -1,0 +1,65 @@
+version: '3'
+services:
+  mysql:
+   image: mysql:latest
+   restart: always
+   environment:
+    MYSQL_ROOT_PASSWORD: password123
+    MYSQL_DATABASE: docker_compose_setup
+  redis:
+    image: redis:latest
+    restart: always
+  worker:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./worker
+    volumes:
+      - /app/node_modules
+      - ./worker:/app
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on: 
+      - redis
+    restart: always
+  api:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./server
+    volumes:
+      - /app/node_modules
+      - ./server:/app
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password123
+      - MYSQL_DATABASE=docker_compose_setup
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on: 
+      - mysql
+      - redis
+    restart: always
+  client:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./client
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+    environment:
+      - WDS_SOCKET_PORT=0
+    depends_on:
+      - api
+    restart: always
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - '8080:80'
+    depends_on:
+      - client
+      - api
