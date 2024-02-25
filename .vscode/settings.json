@@ -1,0 +1,10 @@
+{
+  "vsicons.associations.files": [
+    {
+      "icon": "nginx", // Custom Icon
+      "extensions": ["default.conf"],
+      "filename": true,
+      "format": "svg"
+    }
+  ]
+}

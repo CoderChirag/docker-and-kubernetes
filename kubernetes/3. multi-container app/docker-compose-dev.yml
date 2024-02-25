@@ -42,6 +42,8 @@ services:
       - REDIS_PORT=6379
     restart: always
   client:
+    depends_on:
+      - api
     build:
       dockerfile: Dockerfile.dev
       context: ./client
@@ -50,16 +52,14 @@ services:
       - ./client:/app
     environment:
       - WDS_SOCKET_PORT=0
-    depends_on:
-      - api
     restart: always
   nginx:
+    depends_on:
+      - client
+      - api
     restart: always
     build:
       dockerfile: Dockerfile.dev
       context: ./nginx
     ports:
       - '8080:80'
-    depends_on:
-      - client
-      - api
