@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   name: nginx-server
   labels:
-    component: server
+    app.kubernetes.io/component: server
 spec:
   containers:
     - name: nginx-server

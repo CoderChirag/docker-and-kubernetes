@@ -4,7 +4,7 @@ metadata:
   name: nginx-server
   namespace: poc
   labels:
-    component: server
+    app.kubernetes.io/component: server
 spec:
   containers:
     - name: nginx-server

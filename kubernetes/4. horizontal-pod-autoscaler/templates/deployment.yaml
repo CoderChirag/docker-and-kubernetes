@@ -6,12 +6,12 @@ metadata:
 spec:
   selector:
     matchLabels:
-      component: server
+      app.kubernetes.io/component: server
   template:
     metadata:
       namespace: poc
       labels:
-        component: server
+        app.kubernetes.io/component: server
     spec:
       containers:
         - name: nginx
