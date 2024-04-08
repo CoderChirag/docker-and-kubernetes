@@ -8,6 +8,6 @@ spec:
     app.kubernetes.io/component: client
   type: ClusterIP
   ports:
-    - port: {{ .Values.ports.port }}
+    - port: {{ .Values.ports.servicePort }}
       targetPort: {{ .Values.ports.containerPort }}
   
