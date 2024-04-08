@@ -1,0 +1,6 @@
+image:
+  repository: coderchirag2002/multi-app-client
+  tag: latest
+
+minReplicas: 2
+maxReplicas: 5
