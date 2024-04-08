@@ -1,0 +1,17 @@
+replicas: 1
+
+image:
+  repository: coderchirag2002/multi-app-worker
+  tag: latest
+
+redis:
+  host: redis.redis
+  port: 6379
+
+resources:
+  requests:
+    memory: "64Mi"
+    cpu: "250m"
+  limits:
+    memory: "128Mi"
+    cpu: "500m"
