@@ -1,0 +1,52 @@
+image:
+  repository: coderchirag2002/multi-app-server
+  tag: latest
+
+minReplicas: 2
+maxReplicas: 5
+
+redis:
+  host: redis.redis
+  port: 6379
+
+mysql:
+  host: mysql.mysql
+  user: root
+  port: 3306
+  db: k8s_setup
+  secretName: mysql-password
+  secretKey: MYSQL_PASSWORD
+
+resources:
+  requests:
+    memory: "128Mi"
+    cpu: "250m"
+  limits:
+    memory: "512Mi"
+    cpu: "500m"
+
+probes:
+  livenessProbe:
+    httpGet:
+      path: /
+      port: 5000
+    initialDelaySeconds: 15
+    timeoutSeconds: 2
+    periodSeconds: 5
+    failureThreshold: 5
+  readinessProbe:
+    httpGet:
+      path: /
+      port: 5000
+    initialDelaySeconds: 15
+    timeoutSeconds: 2
+    periodSeconds: 5
+    failureThreshold: 5
+  startupProbe:
+    httpGet:
+      path: /
+      port: 5000
+    initialDelaySeconds: 15
+    timeoutSeconds: 2
+    periodSeconds: 5
+    failureThreshold: 5

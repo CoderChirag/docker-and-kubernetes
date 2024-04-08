@@ -1,0 +1,5 @@
+namespace: server
+
+ports:
+  servicePort: 80
+  containerPort: 5000
