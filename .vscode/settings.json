@@ -1,10 +1,5 @@
 {
-  "vsicons.associations.files": [
-    {
-      "icon": "nginx", // Custom Icon
-      "extensions": ["default.conf"],
-      "filename": true,
-      "format": "svg"
-    }
-  ]
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

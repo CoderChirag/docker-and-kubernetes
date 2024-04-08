@@ -17,4 +17,4 @@ spec:
               service:
                 name: {{ .Release.Name }}
                 port:
-                  number: {{ .Values.ports.containerPort }}
+                  number: 80
