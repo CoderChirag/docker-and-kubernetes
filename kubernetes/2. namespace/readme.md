@@ -4,6 +4,10 @@
   <br/>
 - Most of the Kubernetes Objects are Inside any 1 namespace, and cannot directly communicate with other Objects outside the Namespace. ​
   <br/>
-- For Running: `kubectl apply -f ./templates` (this will create a namespace, as well as, deploy the pod into that namespace.
+- For Running:
+  ```bash
+  kubectl apply -f ./templates/namespace.yaml
+  kubectl apply -f ./templates
+  ```
   <br/>
 - For Deleting (namespace & pod both): `kubectl delete -f ./templates`

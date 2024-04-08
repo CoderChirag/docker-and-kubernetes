@@ -8,7 +8,8 @@
   <br/>
 - For running:
   ```bash
-  minikube addon enable metrics-server
+  minikube addons enable metrics-server
+  kubectl apply -f ./templates/namespace.yaml
   kubectl apply -f ./templates
   ```
   <br/>
