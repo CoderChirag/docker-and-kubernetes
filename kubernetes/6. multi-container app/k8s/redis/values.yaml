@@ -1,0 +1,5 @@
+namespace: redis
+
+ports:
+  servicePort: 6379
+  containerPort: 6379
