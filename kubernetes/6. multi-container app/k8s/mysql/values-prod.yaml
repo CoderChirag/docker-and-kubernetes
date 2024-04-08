@@ -1,0 +1,24 @@
+pvc:
+  accessMode: ReadWriteOnce
+  storage: 2Gi
+
+replicas: 1
+
+image:
+  repository: mysql
+  tag: 8
+
+mysql:
+  db: k8s_setup
+  passwordSecretName: mysql-password
+  passwordSecretKey: MYSQL_ROOT_PASSWORD
+  volumeMountPath: /var/lib/mysql
+  volumeSubPath: mysql
+
+resources:
+  requests:
+    memory: "512Mi"
+    cpu: "250m"
+  limits:
+    memory: "1024Mi"
+    cpu: "500m"
